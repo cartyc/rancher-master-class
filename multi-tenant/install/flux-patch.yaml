@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux
+spec:
+  template:
+    spec:
+      containers:
+        - name: flux
+          args:
+            - --manifest-generation=true
+            - --memcached-hostname=flux-memcached.flux-system
+            - --memcached-service=
+            - --git-poll-interval=2m
+            - --sync-interval=2m
+            - --ssh-keygen-dir=/var/fluxd/keygen
+            - --git-branch=master
+            - --git-path=cluster
+            - --git-url=git@github.com:cartyc/kubecon-multi-tenant.git
+            - --sync-garbage-collection

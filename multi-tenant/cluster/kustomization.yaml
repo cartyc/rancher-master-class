@@ -1,0 +1,7 @@
+bases:
+  - ./gatekeeper/
+  - ./demo-app/
+  - ./falco/
+  - ./helmrelease
+  # - ./elasticstack  
+  - ./policy/

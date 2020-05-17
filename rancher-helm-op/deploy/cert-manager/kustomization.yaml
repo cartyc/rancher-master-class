@@ -1,0 +1,4 @@
+resources:
+  - certmanager-crd.yaml
+  - namespace.yaml
+  - helmrelease.yaml

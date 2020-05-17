@@ -1,0 +1,25 @@
+on: [push, pull_request]
+name: test
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    container: macintoshprime/kubectl:v1.17-git
+    steps:
+      - uses: actions/checkout@v1
+      - name: Validate kustomization
+        run: |
+            echo "Validating install"
+            kustomize build install | kubeval --strict --ignore-missing-schemas
+            echo "Validating cluster"
+            kustomize build cluster | kubeval --strict --ignore-missing-schemas
+            echo "Validating cluster/flagger"
+            kustomize build cluster/flagger | kubeval --strict --ignore-missing-schemas
+            echo "Validating cluster/gatekeeper"
+            kustomize build cluster/gatekeeper | kubeval --strict --ignore-missing-schemas
+      - name: Deny latest container image tags
+        run: |
+            pwd
+            cd /kubeknife
+            mkdir policy
+            git clone https://github.com/cartyc/opa-policies.git policy
+            kustomize build /__w/kubecon-multi-tenant/kubecon-multi-tenant/cluster | conftest test -p policy -
