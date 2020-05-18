@@ -21,3 +21,10 @@
     kubectl delete secret flux-git-deploy -n $NAMESPACE
     kubectl create secret generic flux-git-deploy --from-file=identity=$HOME/.ssh/demo-app -n $NAMESPACE
 }
+
+# Policy
+{
+    export NAMESPACE=policy
+    kubectl delete secret flux-git-deploy -n $NAMESPACE
+    kubectl create secret generic flux-git-deploy --from-file=identity=$HOME/.ssh/opa -n $NAMESPACE
+}

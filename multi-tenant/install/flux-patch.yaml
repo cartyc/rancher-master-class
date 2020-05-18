@@ -18,3 +18,4 @@ spec:
             - --git-path=cluster
             - --git-url=git@github.com:cartyc/kubecon-multi-tenant.git
             - --sync-garbage-collection
+            - --registry-disable-scanning
