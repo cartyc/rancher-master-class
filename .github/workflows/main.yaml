@@ -66,6 +66,7 @@ jobs:
 
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
+    needs: terraform
     runs-on: ubuntu-latest
 
     steps:
