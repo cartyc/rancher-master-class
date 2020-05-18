@@ -19,8 +19,8 @@ env:
   TF_VAR_rancher_secret_key: ${{ secrets.TF_VAR_rancher_secret_key}}
   TF_VAR_rancher_url: ${{ secrets.TF_VAR_rancher_url}}
   GOOGLE_CREDENTIALS: ${{ secrets.TF_VAR_credentials}}
-  GKE_CLUSTER: ${{ secrets.CLUSTER_NAME_DEV}}   # TODO: update to cluster name
-  GKE_ZONE: ${{ secrets.CLUSTER_ZONE_DEV }} # TODO: update to cluster zone  
+  GKE_CLUSTER: ${{ secrets.CLUSTER_NAME_DEV}}   
+  GKE_ZONE: ${{ secrets.CLUSTER_ZONE_DEV }}
 
 jobs:
   terraform:
@@ -87,7 +87,7 @@ jobs:
 
     # Get the GKE credentials so we can deploy to the cluster
     - run: |-
-        gcloud container clusters get-credentials "$GKE_CLUSTER_DEV" --zone "$GKE_ZONE"
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
     - name: Add to Rancher
       run: |-
