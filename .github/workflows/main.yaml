@@ -27,7 +27,7 @@ jobs:
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'init'
+          tf_actions_subcommand: 'init rancher-k8s-import/gke'
           args: '-lock=false'
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
@@ -38,13 +38,13 @@ jobs:
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'plan'
+          tf_actions_subcommand: 'plan rancher-k8s-import/gke'
           args: '-destroy'
       - name: 'Terraform Apply'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'apply'
+          tf_actions_subcommand: 'apply rancher-k8s-import/gke'
       - name: 'Terraform Apply'
         run:
           ls                 
