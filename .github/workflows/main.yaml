@@ -7,11 +7,11 @@ on:
   push:
     branches: [ master ]
     paths:
-    - rancher-k8s-import
+    - 'rancher-k8s-import/**'
   pull_request:
     branches: [ master ]
     paths:
-    - rancher-k8s-import
+    - 'rancher-k8s-import/**'
 
 env:
   TF_VAR_username: ${{ secrets.TF_VAR_username}}
