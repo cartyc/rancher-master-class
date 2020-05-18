@@ -10,10 +10,10 @@ on:
     branches: [ master ]
 
 env:
-  TF_VAR_username: ${{ secrets.TF_VAR_username}}
+  TF_VAR_rancher_access_key: ${{ secrets.TF_VAR_rancher_access_key}}
   TF_VAR_credentials: ${{ secrets.TF_VAR_credentials}}
-  ssh_pub: ${{ secrets.TF_VAR_ssh_pub}}
-  ssh_key: ${{ secrets.TF_VAR_ssh_key}}
+  TF_VAR_rancher_secret_key: ${{ secrets.TF_VAR_rancher_secret_key}}
+  TF_VAR_rancher_url: ${{ secrets.TF_VAR_rancher_url}}
   GOOGLE_CREDENTIALS: ${{ secrets.TF_VAR_credentials}}
 
 jobs:
