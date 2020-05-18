@@ -82,7 +82,7 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '290.0.1'
-        service_account_key: ${{ secrets.TF_VAR_credentials }}
+        service_account_key: ${{ secrets.GKE_SERVICE_ACCOUNT }}
         project_id: ${{ secrets.GKE_PROJECT }}
 
     # Get the GKE credentials so we can deploy to the cluster
