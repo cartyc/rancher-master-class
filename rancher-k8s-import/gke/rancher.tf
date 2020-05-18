@@ -10,7 +10,7 @@ resource "rancher2_cluster" "gke-import" {
   name        = "gke-master"
   description = "Created and Added through GitOps!"
 
-  enable_cluster_monitoring =  false
+  enable_cluster_monitoring =  true
 }
 
 # resource "rancher2_project" "flux" {
