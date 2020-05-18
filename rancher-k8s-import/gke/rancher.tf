@@ -7,8 +7,10 @@ provider "rancher2" {
 
 resource "rancher2_cluster" "gke-import" {
   provider    = rancher2.rancher-test
-  name        = "gke-import"
+  name        = "gke-import-dev"
   description = "Foo rancher2 imported cluster"
+
+  enable_cluster_monitoring = false
 }
 
 output "cluster" {
