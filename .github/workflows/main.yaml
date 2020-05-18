@@ -23,6 +23,9 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      - name: 'Test Directory'
+        run:
+          pwd && ls        
       - name: 'Terraform Init test'
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -48,7 +51,4 @@ jobs:
         with:
           tf_actions_version: 0.12.24
           tf_actions_subcommand: 'apply'
-          tf_actions_working_dir: 'rke-gcp-terraform/gke'
-      - name: 'Terraform Apply'
-        run:
-          ls                 
+          tf_actions_working_dir: 'rke-gcp-terraform/gke'               
