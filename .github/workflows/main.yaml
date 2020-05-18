@@ -87,7 +87,7 @@ jobs:
 
     # Get the GKE credentials so we can deploy to the cluster
     - run: |-
-        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+        gcloud container clusters get-credentials "$GKE_CLUSTER_DEV" --zone "$GKE_ZONE"
 
     - name: Add to Rancher
       run: |-
