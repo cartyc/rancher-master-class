@@ -91,4 +91,7 @@ jobs:
 
     - name: Add to Rancher
       run: |-
+        kubectl create clusterrolebinding cluster-admin-binding \
+        --clusterrole=cluster-admin \
+        --user=$(gcloud config get-value core/account) && 
         ls && ls command && bash ./command/command.txt
