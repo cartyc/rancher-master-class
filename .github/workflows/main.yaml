@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: command
-          path: command.txt    
+          path: rancher-k8s-import/gke/command.txt    
 
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
