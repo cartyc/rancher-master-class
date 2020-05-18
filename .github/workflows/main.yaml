@@ -28,10 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@master
-      - name: 'Test Directory'
-        run:
-          pwd && ls        
+        uses: actions/checkout@master       
       - name: 'Terraform Init test'
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -58,6 +55,9 @@ jobs:
           tf_actions_version: 0.12.24
           tf_actions_subcommand: 'apply'
           tf_actions_working_dir: 'rancher-k8s-import/gke'
+      - name: 'Test Directory'
+        run:
+          pwd && ls && ls  rancher-k8s-import/gke        
       - name: Upload K8s configs
         uses: actions/upload-artifact@v1
         with:
