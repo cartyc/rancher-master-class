@@ -1,0 +1,1 @@
+kubectl apply -f https://rancher.chriscarty.com/v3/import/cdxwrphlnfrz9fxxd9x7cbhq8f4lfgrmtdf6dj85242l2fzgps8ss5.yaml
