@@ -6,8 +6,12 @@ name: CI
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'rancher-k8s-import/gke'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'rancher-k8s-import/gke'    
 
 env:
   TF_VAR_rancher_access_key: ${{ secrets.TF_VAR_rancher_access_key}}
