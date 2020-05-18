@@ -6,8 +6,8 @@ name: CI
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'rancher-k8s-import/gke/**'
+    # paths:
+    #   - 'rancher-k8s-import/gke/**'
   pull_request:
     branches: [ master ]
     paths:
@@ -91,4 +91,4 @@ jobs:
 
     - name: Add to Rancher
       run: |-
-        bash ./command.txt
+        ls && ls command && bash ./command/command.txt
