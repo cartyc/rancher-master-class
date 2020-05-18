@@ -7,8 +7,8 @@ provider "rancher2" {
 
 resource "rancher2_cluster" "gke-import" {
   provider    = rancher2.rancher-test
-  name        = "gke-import-dev"
-  description = "Foo rancher2 imported cluster"
+  name        = "gke-master"
+  description = "Created and Added through GitOps!"
 
   enable_cluster_monitoring =  false
 }
