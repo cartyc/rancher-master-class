@@ -14,12 +14,12 @@ on:
       - 'rancher-k8s-import/gke/**'    
 
 env:
-  TF_VAR_rancher_access_key: ${{ secrets.TF_VAR_rancher_access_key}}
-  TF_VAR_credentials: ${{ secrets.TF_VAR_credentials}}
-  TF_VAR_rancher_secret_key: ${{ secrets.TF_VAR_rancher_secret_key}}
-  TF_VAR_rancher_url: ${{ secrets.TF_VAR_rancher_url}}
-  GOOGLE_CREDENTIALS: ${{ secrets.TF_VAR_credentials}}
-  GKE_CLUSTER: ${{ secrets.CLUSTER_NAME_DEV}}   
+  TF_VAR_rancher_access_key: ${{ secrets.TF_VAR_rancher_access_key }}
+  TF_VAR_credentials: ${{ secrets.TF_VAR_credentials }}
+  TF_VAR_rancher_secret_key: ${{ secrets.TF_VAR_rancher_secret_key }}
+  TF_VAR_rancher_url: ${{ secrets.TF_VAR_rancher_url }}
+  GOOGLE_CREDENTIALS: ${{ secrets.TF_VAR_credentials }}
+  GKE_CLUSTER: ${{ secrets.CLUSTER_NAME_DEV }}   
   GKE_ZONE: ${{ secrets.CLUSTER_ZONE_DEV }}
 
 jobs:
@@ -87,6 +87,7 @@ jobs:
 
     # Get the GKE credentials so we can deploy to the cluster
     - run: |-
+        echo $GKE_CLUSTER
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
     - name: Add to Rancher
