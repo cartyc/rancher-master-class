@@ -15,6 +15,8 @@ env:
   TF_VAR_rancher_secret_key: ${{ secrets.TF_VAR_rancher_secret_key}}
   TF_VAR_rancher_url: ${{ secrets.TF_VAR_rancher_url}}
   GOOGLE_CREDENTIALS: ${{ secrets.TF_VAR_credentials}}
+  GKE_CLUSTER: ${{ secrets.CLUSTER_NAME}}   # TODO: update to cluster name
+  GKE_ZONE: ${{ secrets.CLUSTER_ZONE }} # TODO: update to cluster zone  
 
 jobs:
   terraform:
@@ -51,4 +53,37 @@ jobs:
         with:
           tf_actions_version: 0.12.24
           tf_actions_subcommand: 'apply'
-          tf_actions_working_dir: 'rancher-k8s-import/gke'               
+          tf_actions_working_dir: 'rancher-k8s-import/gke'
+      - name: Upload K8s configs
+        uses: actions/upload-artifact@v1
+        with:
+          name: command
+          path: command.txt    
+
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+
+    - name: Download math result for job 1
+      uses: actions/download-artifact@v1
+      with:
+        name: command
+    # Setup gcloud CLI
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_key: ${{ secrets.TF_VAR_credentials }}
+        project_id: ${{ secrets.GKE_PROJECT }}
+
+    # Get the GKE credentials so we can deploy to the cluster
+    - run: |-
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
+    - name: Add to Rancher
+      run: |-
+        bash ./command.txt
