@@ -25,7 +25,7 @@ resource "rancher2_cluster" "gke-import" {
 #   name = "demo-app"
 #   cluster_id = rancher2_cluster.gke-import.cluster_registration_token[0].cluster_id
 
-}
+# }
 
 output "cluster" {
   value = rancher2_cluster.gke-import.cluster_registration_token
