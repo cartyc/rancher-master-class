@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "k8s-import"
+    bucket  = "k8s-dev"
     prefix  = "terraform/dev-state"
   }
 }
