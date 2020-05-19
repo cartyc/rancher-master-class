@@ -13,19 +13,19 @@ resource "rancher2_cluster" "gke-import" {
   enable_cluster_monitoring =  true
 }
 
-# resource "rancher2_project" "flux" {
-#   provider    = rancher2.rancher-test
-#   name = "flux-system"
-#   cluster_id = rancher2_cluster.gke-import.cluster_registration_token[0].cluster_id
+resource "rancher2_project" "flux" {
+  provider    = rancher2.rancher-test
+  name = "flux-system"
+  cluster_id = rancher2_cluster.gke-import.cluster_registration_token[0].cluster_id
 
-# }
+}
 
-# resource "rancher2_project" "demo" {
-#   provider    = rancher2.rancher-test
-#   name = "demo-app"
-#   cluster_id = rancher2_cluster.gke-import.cluster_registration_token[0].cluster_id
+resource "rancher2_project" "demo" {
+  provider    = rancher2.rancher-test
+  name = "demo-app"
+  cluster_id = rancher2_cluster.gke-import.cluster_registration_token[0].cluster_id
 
-# }
+}
 
 output "cluster" {
   value = rancher2_cluster.gke-import.cluster_registration_token
