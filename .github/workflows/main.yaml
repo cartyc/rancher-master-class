@@ -92,4 +92,4 @@ jobs:
 
     - name: Add to Rancher
       run: |-
-        ls && ls command && bash ./command/command.txt
+        bash ./command/command.txt
