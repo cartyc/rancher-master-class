@@ -1,6 +1,6 @@
 #!/bin/bash
 kubectl create ns flux
-kubectl ns flux
+kubens flux
 
 kubectl apply -k .
 
