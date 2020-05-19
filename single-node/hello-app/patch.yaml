@@ -14,9 +14,7 @@ spec:
             - --memcached-service=
             - --ssh-keygen-dir=/var/fluxd/keygen
             - --git-branch=master
-            - --git-path=
+            - --git-path=deploy
             - --git-user=macintoshprime
             - --git-email=@users.noreply.github.com
             - --git-url=git@github.com:cartyc/hello-k8s-deployment.git
-            - --git-readonly
-            - --registry-disable-scanning
